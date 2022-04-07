@@ -1,0 +1,18 @@
+{
+  "name": "atomic-transactions",
+  "version": "1.0.0",
+  "description": "Transactions for execution atomic tasks",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest --collect-coverage"
+  },
+  "repository": "https://github.com/",
+  "author": "Siarhei Hrynevich",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "typescript": "^4.6.3",
+    "ts-jest": "^25.5.1"
+  }
+}

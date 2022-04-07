@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "module": "es6",
+    "outDir":"./dist",
+    "rootDir": "./src",
+    "target": "es2018",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": false,
+    "sourceMap": true,
+    "preserveSymlinks": true
+  },
+}
