@@ -13,14 +13,14 @@ async function rollbackTransactions<ContextType>(
   const reversedTransactions = transactions.reverse()
   for (const transaction of reversedTransactions) {    
     if (typeof transaction.rollback === 'function') {
-      context = await transaction.rollback(context) ?? context
+      context = await transaction.rollback(context) as Context<ContextType> ?? context
     }
   }
 }
 
 export async function executeTransactions<ContextType>(
     transactions: Task<ContextType>[],
-    initialContext: Context<ContextType> = {},
+    initialContext: Context<ContextType> = {} as Context<ContextType>,
     options: TransactionOptions = {}
   ): Promise<ExecutionResult<ContextType>> {
 
@@ -29,7 +29,7 @@ export async function executeTransactions<ContextType>(
   
   for (const transaction of transactions) {
     try {
-      context = await transaction.execute(context) ?? context
+      context = await transaction.execute(context) as Context<ContextType> ?? context
       executedTransactions.push(transaction)
     } catch(e) {
       options.rollbackLastTransaction ?? executedTransactions.push(transaction)

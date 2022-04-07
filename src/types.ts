@@ -1,6 +1,6 @@
 
-export type TaskResult<ValueType> = Promise<ValueType> | ValueType | undefined
-export type Context<ValueType> = ValueType | Object
+export type TaskResult<ValueType> = Promise<ValueType> | Promise<ValueType> | ValueType | void
+export type Context<ValueType> = ValueType
 
 export interface Task<ContextType> {
   name?: string
