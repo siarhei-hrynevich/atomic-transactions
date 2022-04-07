@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "test": "jest --collect-coverage"
   },
-  "repository": "https://github.com/",
+  "repository": "https://github.com/siarhei-hrynevich/atomic-transactions",
   "author": "Siarhei Hrynevich",
   "license": "MIT",
   "devDependencies": {
