@@ -58,7 +58,7 @@ describe('executeTransactions', () => {
         expect(t.execute).toBeCalledTimes(1)
         expect(t.rollback).toBeCalledTimes(1)
       })
-      failedTransactions.slice(6, failedTransactions.length).forEach(t => {
+      failedTransactions.slice(SUCCESSFUL_TRANSACTIONS_AMOUNT + 1, failedTransactions.length).forEach(t => {
         expect(t.execute).toBeCalledTimes(0)
         expect(t.rollback).toBeCalledTimes(0)
       })
