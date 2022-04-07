@@ -1,17 +1,22 @@
-import { Context, Task, TransactionOptions, ExecutionResult } from "./types"
+import { 
+  Context, 
+  Task, 
+  TransactionOptions,
+  ExecutionResult,
+  ExecutionStatus,
+} from "./types"
 
 async function rollbackTransactions<ContextType>(
     transactions: Task<ContextType>[], 
     context: Context<ContextType>
   ) {
-  transactions
-    .reverse()
-    .forEach(async (transaction) => {
-      if (typeof transaction.rollback === 'function') {
-        context = await transaction.rollback(context) ?? context
-      }
-    })
-} 
+  const reversedTransactions = transactions.reverse()
+  for (const transaction of reversedTransactions) {    
+    if (typeof transaction.rollback === 'function') {
+      context = await transaction.rollback(context) ?? context
+    }
+  }
+}
 
 export async function executeTransactions<ContextType>(
     transactions: Task<ContextType>[],
@@ -19,19 +24,26 @@ export async function executeTransactions<ContextType>(
     options: TransactionOptions = {}
   ): Promise<ExecutionResult<ContextType>> {
 
-  const executedTransactions = []
+  const executedTransactions: Task<ContextType>[] = []
   let context: Context<ContextType> = initialContext
-  for (let transaction of transactions) {
+  
+  for (const transaction of transactions) {
     try {
       context = await transaction.execute(context) ?? context
       executedTransactions.push(transaction)
     } catch(e) {
       options.rollbackLastTransaction ?? executedTransactions.push(transaction)
-      rollbackTransactions(executedTransactions, context)
-      return
+      await rollbackTransactions(executedTransactions, context)
+      break
     }
   }
+  
+  const status: ExecutionStatus = 
+    executedTransactions.length === transactions.length 
+      ?
+    ExecutionStatus.SUCCESS : ExecutionStatus.ERROR
   return {
-    context
+    context,
+    status
   }
 }

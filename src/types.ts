@@ -14,4 +14,10 @@ export interface TransactionOptions {
 
 export interface ExecutionResult<ContextType> {
   context: Context<ContextType>
+  status: ExecutionStatus
+}
+
+export enum ExecutionStatus {
+  SUCCESS,
+  ERROR,
 }
