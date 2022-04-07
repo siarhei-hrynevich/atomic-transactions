@@ -9,7 +9,7 @@ export interface Task<ContextType> {
 }
 
 export interface TransactionOptions {
-  rollbackLastTransaction?: boolean;
+  rollbackLastTransaction?: boolean
 }
 
 export interface ExecutionResult<ContextType> {
