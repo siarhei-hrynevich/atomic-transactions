@@ -11,4 +11,5 @@
     "sourceMap": true,
     "preserveSymlinks": true
   },
+  "exclude": ["src/__test__"]
 }
