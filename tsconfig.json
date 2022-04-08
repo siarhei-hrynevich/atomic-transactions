@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "noImplicitAny": false,
     "module": "es6",
     "outDir":"./dist",
@@ -8,8 +9,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": false,
-    "sourceMap": true,
     "preserveSymlinks": true
   },
-  "exclude": ["src/__test__"]
+  "exclude": ["src/__test__", "dist"]
 }

@@ -2,9 +2,11 @@
   "name": "atomic-transactions",
   "version": "1.0.0",
   "description": "Transactions for execution atomic tasks",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -p .",
+    "prepublish": "npm run build",
+    "build": "npm run clean && tsc -p .",
+    "clean": "rm -r dist",
     "test": "jest --collect-coverage"
   },
   "repository": "https://github.com/siarhei-hrynevich/atomic-transactions",
