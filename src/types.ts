@@ -12,9 +12,15 @@ export interface TransactionOptions {
   rollbackLastTransaction?: boolean
 }
 
+export interface ExecutionInfo<ContextType> {
+  status: ExecutionStatus
+  error?: Error
+  lastExecutedTask: Task<ContextType>
+}
+
 export interface ExecutionResult<ContextType> {
   context: Context<ContextType>
-  status: ExecutionStatus
+  info: ExecutionInfo<ContextType>
 }
 
 export enum ExecutionStatus {

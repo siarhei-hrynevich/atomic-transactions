@@ -31,7 +31,7 @@ describe('executeTransactions', () => {
     it('have to return SUCCESS status', async () => {
       const result = await executeTransactions(successfulTransactions)
   
-      expect(result.status).toBe(ExecutionStatus.SUCCESS)
+      expect(result.info.status).toBe(ExecutionStatus.SUCCESS)
     })
   })
   
@@ -67,7 +67,7 @@ describe('executeTransactions', () => {
     it('have to return FAILED status', async () => {
       const result = await executeTransactions(failedTransactions)
   
-      expect(result.status).toBe(ExecutionStatus.FAILED)
+      expect(result.info.status).toBe(ExecutionStatus.FAILED)
     })
   })
 })
