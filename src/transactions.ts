@@ -32,7 +32,7 @@ export async function executeTransactions<ContextType>(
       context = await transaction.execute(context) as Context<ContextType> ?? context
       executedTransactions.push(transaction)
     } catch(e) {
-      options.rollbackLastTransaction ?? executedTransactions.push(transaction)
+      options.rollbackLastTransaction && executedTransactions.push(transaction)
       await rollbackTransactions(executedTransactions, context)
       break
     }
