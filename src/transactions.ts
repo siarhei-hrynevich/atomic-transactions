@@ -41,7 +41,7 @@ export async function executeTransactions<ContextType>(
   const status: ExecutionStatus = 
     executedTransactions.length === transactions.length 
       ?
-    ExecutionStatus.SUCCESS : ExecutionStatus.ERROR
+    ExecutionStatus.SUCCESS : ExecutionStatus.FAILED
   return {
     context,
     status

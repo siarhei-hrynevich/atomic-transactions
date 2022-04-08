@@ -64,10 +64,10 @@ describe('executeTransactions', () => {
       })
     })
 
-    it('have to return ERROR status', async () => {
+    it('have to return FAILED status', async () => {
       const result = await executeTransactions(failedTransactions)
   
-      expect(result.status).toBe(ExecutionStatus.ERROR)
+      expect(result.status).toBe(ExecutionStatus.FAILED)
     })
   })
 })

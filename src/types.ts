@@ -18,6 +18,6 @@ export interface ExecutionResult<ContextType> {
 }
 
 export enum ExecutionStatus {
-  SUCCESS,
-  ERROR,
+  SUCCESS = "SUCCESS",
+  FAILED = "FAILED",
 }
